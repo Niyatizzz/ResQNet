@@ -40,19 +40,44 @@ body {
 .header-nav {
   display: flex;
   list-style: none; /* Remove default bullet points */
-  gap: 25px; /* Increased gap for more space between items */
+  gap: 40px; /* Increased gap for more space between items */
   padding: 0;
   margin: 0;
+  justify-content: space-evenly; /* Distribute items evenly */
+  width: 100%; /* Ensures the navigation takes the full width */
 }
 
 .header-nav li {
-  font-size: 1.1rem; /* Slightly larger font size for better visibility */
+  font-size: 1rem; /* Slightly larger font size for better visibility */
   cursor: pointer;
+  position: relative; /* To position the pseudo-element correctly */
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center; /* Aligns the icon and text */
+  gap: 10px; /* Adds space between the icon and text */
+}
+
+.header-nav li::after {
+  content: "";
+  position: absolute;
+  bottom: -5px; /* Adjust the distance of the line from the text */
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #e74c3c; /* Red line */
+  transition: width 0.3s ease; /* Transition effect for the underline */
+}
+
+.header-nav li:hover::after {
+  width: 100%; /* Line expands to full width on hover */
+}
+
+.header-nav li i {
+  font-size: 1rem; /* Adjust icon size */
 }
 
 .header-nav li:hover {
-  color: #bbb; /* Light gray for hover effect */
+  color: #807b7b; /* Light gray for hover effect */
 }
 
 /* Full screen hero section with background */
