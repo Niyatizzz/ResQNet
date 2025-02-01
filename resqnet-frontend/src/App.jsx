@@ -5,7 +5,20 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <header className="hero-section">
+      <header className="app-header">
+        <div className="header-left">
+          <h1>ResQNet</h1>
+        </div>
+        <div className="header-right">
+          <ul className="header-nav">
+            <li>Home</li>
+            <li>About Us</li>
+            <li>Helpline</li>
+            <li>Login/Signup</li>
+          </ul>
+        </div>
+      </header>
+      <section className="hero-section">
         <div className="hero-content">
           <h1 className="hero-title">ResQNet</h1>
           <p className="hero-tagline">
@@ -16,8 +29,16 @@ function App() {
             <button className="cta-button victim">Victim</button>
             <button className="cta-button organization">Organization</button>
           </div>
+          <div className="extra-buttons">
+            <button className="cta-button report-disaster">
+              Report Disaster
+            </button>
+            <button className="cta-button locate-disaster">
+              Locate Disaster
+            </button>
+          </div>
         </div>
-      </header>
+      </section>
     </div>
   );
 }

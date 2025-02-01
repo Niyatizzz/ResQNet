@@ -8,34 +8,92 @@ body {
 
 .App {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column; /* Ensures header stays on top and content below */
   height: 100vh;
-  background-image: url("https://plus.unsplash.com/premium_photo-1663045423469-aade0c24bd6a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D "); /* Path to your background image */
-  background-size: cover;
-  background-position: center;
+  overflow: hidden; /* Prevent scrolling */
 }
 
+/* Header with backdrop */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 20px 40px; /* Increased padding for more space */
+  position: fixed; /* Make it fixed at the top */
+  top: 0;
+  width: 100%;
+  z-index: 10; /* Ensures header stays above hero section */
+  box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+.header-left h1 {
+  margin: 0;
+  font-size: 1.8rem; /* Slightly larger font size for a better look */
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-nav {
+  display: flex;
+  list-style: none; /* Remove default bullet points */
+  gap: 25px; /* Increased gap for more space between items */
+  padding: 0;
+  margin: 0;
+}
+
+.header-nav li {
+  font-size: 1.1rem; /* Slightly larger font size for better visibility */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.header-nav li:hover {
+  color: #bbb; /* Light gray for hover effect */
+}
+
+/* Full screen hero section with background */
 .hero-section {
   text-align: center;
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.5
-  ); /* Semi-transparent dark background to make text readable */
+  background-image: url("https://plus.unsplash.com/premium_photo-1663045423469-aade0c24bd6a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); /* Background image */
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Ensures it covers the full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Full screen backdrop for text content */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent backdrop */
+  z-index: 1; /* Ensures the backdrop is behind the text */
+}
+
+.hero-content {
+  text-align: center;
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+  z-index: 2; /* Ensures the content is on top of the backdrop */
 }
 
 .hero-title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 10px;
 }
 
 .hero-tagline {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-bottom: 20px;
   color: #bbb; /* Light gray for the tagline */
 }
@@ -43,14 +101,15 @@ body {
 .cta-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 12px;
 }
 
+/* Common button style for all buttons */
 .cta-button {
-  background-color: #333;
+  background-color: transparent;
   color: white;
-  border: 2px solid #444;
-  border-radius: 5px;
+  border: 1.5px solid white;
+  border-radius: 2px;
   padding: 15px 30px;
   font-size: 1rem;
   cursor: pointer;
@@ -63,13 +122,39 @@ body {
 }
 
 .volunteer {
-  background-color: #444; /* Slightly lighter for the volunteer button */
+  background-color: transparent; /* Transparent background for volunteer button */
 }
 
 .victim {
-  background-color: #666; /* Slightly lighter for the victim button */
+  background-color: transparent; /* Transparent background for victim button */
 }
 
 .organization {
-  background-color: #888; /* Slightly lighter for the organization button */
+  background-color: transparent; /* Transparent background for organization button */
+}
+
+/* New buttons: Report Disaster and Locate Disaster */
+.extra-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px; /* Adds space between the existing and new buttons */
+}
+
+.report-disaster,
+.locate-disaster {
+  background-color: transparent;
+  color: #e74c3c;
+  border: 1.5px solid #e74c3c; /* Red border for both buttons */
+  border-radius: 2px;
+  padding: 15px 42px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.report-disaster:hover,
+.locate-disaster:hover {
+  background-color: #e74c3c; /* Red background on hover */
+  border-color: #e74c3c; /* Darker red border on hover */
 }
