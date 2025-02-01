@@ -5,6 +5,11 @@ const User = require("../models/User");
 
 const router = express.Router();
 
+// Test route for /auth/
+router.get("/", (req, res) => {
+  res.send("Auth route is working!");
+});
+
 // Signup Route
 router.post("/register", async (req, res) => {
   try {
