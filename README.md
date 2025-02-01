@@ -1,3 +1,27 @@
+# ResQNet
+## Adversities To Action
+### Linking Those In Need With Those Who Lead
+
+#### “We are like a bridge for disaster relief, that conects affected communities with the right aid and support, ensuring resources reach those in need at the right time.”
+
+ResQNet is a crowdsourced disaster response platform
+ bridging the gap between affected communities and aid
+ organizations. It enables victims to report needs while allowing
+ NGOs to coordinate timely assistance. With real-time mapping,
+ request tracking, and volunteer coordination, ResQNet makes
+ humanitarian aid more efficient and accessible.
+
+## Hackstreet 3.0 Hackathon
+
+*Hackstreet 3.0* is an exciting hackathon that brings together innovative minds to tackle real-world challenges through technology. This project *ResQNet* was developed as part of the competition, showcasing creative problem-solving, technical expertise, and teamwork. Hosted by the *IEEE Student Branch JIIT, Noida* the event provided a dynamic platform for participants to push the boundaries of their skills and build impactful solutions.
+
+## Team Members
+
+- [Nihita Kolukula](https://github.com/member1) - GitHub ID: `Nihita123`
+- [Niyati Kolukula](https://github.com/member2) - GitHub ID: `Niyatizzz`
+- [Maheswari Mudadla](https://github.com/member3) - GitHub ID: `Maheswari8074`
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
