@@ -12,6 +12,7 @@ import VolunteerDashboard from "./pages/VolunteerDashboard";
 import OrganizationDashboard from "./pages/OrganisationDashboard";
 import VictimDashboard from "./pages/VictimDashboard";
 import LoginPage from "./pages/Login"; // Import the LoginPage
+import AboutUs from "./pages/About";
 
 function App() {
   const navigate = useNavigate(); // Initialize useNavigate hook
