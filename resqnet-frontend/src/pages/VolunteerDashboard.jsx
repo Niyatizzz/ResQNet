@@ -1,59 +1,43 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import "./Dashboard.css";
 
-const VolunteerDashboard = () => {
+const VolunteerDashboard = ({ volunteerId }) => {
   const [aidRequests, setAidRequests] = useState([]);
-  const volunteerId = "VOLUNTEER_ID"; // Replace with the actual volunteer ID
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/aidrequests/volunteer/${volunteerId}`)
-      .then((res) => setAidRequests(res.data))
-      .catch((err) => console.error("Error fetching aid requests:", err));
+    // Fetch aid requests assigned to the volunteer
+    const fetchRequests = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/aidrequests/volunteer/${volunteerId}`
+        );
+        setAidRequests(response.data);
+      } catch (error) {
+        console.error("Error fetching aid requests:", error);
+      }
+    };
+    fetchRequests();
   }, [volunteerId]);
 
-  const handleAccept = (id) => {
-    console.log(`Request ${id} accepted`);
-    // Implement logic to mark request as "In Progress"
-  };
-
   return (
-    <div style={styles.container}>
-      <h2>Volunteer Dashboard</h2>
-      <ul style={styles.list}>
+    <div className="container mx-auto p-6 max-w-lg">
+      <h2 className="text-2xl font-semibold mb-4">Open Aid Requests</h2>
+      <ul className="space-y-4">
         {aidRequests.map((request) => (
-          <li key={request._id} style={styles.item}>
-            <strong>{request.type}</strong> - {request.location}
-            <button
-              style={styles.button}
-              onClick={() => handleAccept(request._id)}
-            >
-              Accept
-            </button>
+          <li
+            key={request._id}
+            className="bg-gray-100 p-4 rounded-lg shadow-md flex justify-between items-center"
+          >
+            <div>
+              <strong className="text-lg">{request.type}</strong> -{" "}
+              {request.location.coordinates}
+              <p>{request.details}</p>
+            </div>
           </li>
         ))}
       </ul>
     </div>
   );
-};
-
-const styles = {
-  container: { padding: "20px", maxWidth: "600px", margin: "auto" },
-  list: { listStyle: "none", padding: 0 },
-  item: {
-    background: "#f8f9fa",
-    padding: "10px",
-    marginBottom: "10px",
-    borderRadius: "5px",
-  },
-  button: {
-    background: "#28a745",
-    color: "white",
-    border: "none",
-    padding: "5px 10px",
-    cursor: "pointer",
-  },
 };
 
 export default VolunteerDashboard;

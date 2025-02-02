@@ -4,12 +4,14 @@ import {
   Routes,
   Route,
   useNavigate,
-} from "react-router-dom"; // Importing useNavigate
+  Link,
+} from "react-router-dom";
 import "./App.css";
 import AidRequestForm from "./pages/AidRequestForm";
 import VolunteerDashboard from "./pages/VolunteerDashboard";
 import OrganizationDashboard from "./pages/OrganisationDashboard";
 import VictimDashboard from "./pages/VictimDashboard";
+import LoginPage from "./pages/Login"; // Import the LoginPage
 
 function App() {
   const navigate = useNavigate(); // Initialize useNavigate hook
@@ -34,7 +36,9 @@ function App() {
     <div className="App">
       <header className="app-header">
         <div className="header-left">
-          <h1>ResQNet</h1>
+          <h1 className="text-4xl font-bold text-center text-blue-500">
+            ResQNet
+          </h1>
         </div>
         <div className="header-right">
           <ul className="header-nav">
@@ -48,7 +52,8 @@ function App() {
               <i className="fas fa-phone-alt"></i>Helpline
             </li>
             <li>
-              <i className="fas fa-sign-in-alt"></i>Login/Signup
+              <i className="fas fa-sign-in-alt"></i>
+              <Link to="/login">Login/Signup</Link> {/* Link to Login Page */}
             </li>
           </ul>
         </div>
@@ -60,7 +65,6 @@ function App() {
           <p className="hero-tagline">
             Linking Those In Need With Those Who Lead
           </p>
-
           <div className="cta-buttons">
             <button
               className="cta-button volunteer"
@@ -97,9 +101,9 @@ function App() {
         <Route path="/organization" element={<OrganizationDashboard />} />
         <Route path="/victim" element={<VictimDashboard />} />
         <Route path="/request-aid" element={<AidRequestForm />} />
+        <Route path="/login" element={<LoginPage />} /> {/* Add Login Route */}
       </Routes>
 
-      {/* Footer */}
       <footer className="app-footer">
         <div className="footer-content">
           <p>&copy; 2025 ResQNet. All rights reserved.</p>
@@ -107,17 +111,6 @@ function App() {
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
             <a href="#">Contact</a>
-          </div>
-          <div className="footer-social">
-            <a href="#" className="social-icon">
-              <i className="fab fa-facebook"></i>
-            </a>
-            <a href="#" className="social-icon">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#" className="social-icon">
-              <i className="fab fa-instagram"></i>
-            </a>
           </div>
         </div>
       </footer>
@@ -128,8 +121,6 @@ function App() {
 function AppWrapper() {
   return (
     <Router>
-      {" "}
-      {/* Wrap the app with Router */}
       <App />
     </Router>
   );

@@ -116,19 +116,21 @@ body {
 }
 
 /* Buttons */
-.button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  background: #007bff; /* Blue background for buttons */
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s ease;
+.resaid {
+  background-color: transparent;
+  color: #e74c3c;
+  border: 1.5px solid #e74c3c; /* Red border for both buttons */
+  border-radius: 2px;
+  padding: 15px 42px;
   font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.button:hover {
-  background: #0056b3; /* Darker blue on hover */
+.resaid:hover {
+  background-color: #e74c3c; /* Red background on hover */
+  border-color: #e74c3c; /* Darker red border on hover */
+  color: white;
 }
 
 /* Secondary button style */

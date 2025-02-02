@@ -1,73 +1,58 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // <-- Import useNavigate here
 import axios from "axios";
-import "./Dashboard.css";
 
-const VictimDashboard = () => {
-  const [requests, setRequests] = useState([]);
-  const navigate = useNavigate(); // For navigation
-  const victimId = "VICTIM_ID"; // Replace with the actual victim ID
+const VictimDashboard = ({ victimId }) => {
+  const [aidRequests, setAidRequests] = useState([]);
+  const navigate = useNavigate(); // <-- Initialize navigate function
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/aidrequests/victim/${victimId}`)
-      .then((res) => setRequests(res.data))
-      .catch((err) => console.error("Error fetching requests:", err));
+    // Fetch aid requests created by the victim
+    const fetchRequests = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/aidrequests/victim/${victimId}`
+        );
+        setAidRequests(response.data);
+      } catch (error) {
+        console.error("Error fetching aid requests:", error);
+      }
+    };
+    fetchRequests();
   }, [victimId]);
 
-  // Function to navigate to the aid request form
-  const handleRequestAid = () => {
-    navigate("/request-aid");
-  };
-
   return (
-    <div style={styles.container}>
-      <h2>Victim Dashboard</h2>
-      <h3>My Aid Requests</h3>
-      <ul style={styles.list}>
-        {requests.length > 0 ? (
-          requests.map((req) => (
-            <li key={req._id} style={styles.item}>
-              <strong>{req.type}</strong> - {req.status}
+    <div className="container mx-auto p-6 max-w-lg text-center">
+      <h2 className="text-2xl font-semibold mb-4">My Aid Requests</h2>
+      <ul className="space-y-4">
+        {aidRequests.length > 0 ? (
+          aidRequests.map((request) => (
+            <li
+              key={request._id}
+              className="bg-gray-200 p-4 rounded-lg shadow-md flex justify-between items-center"
+            >
+              <div>
+                <strong className="text-lg">{request.type}</strong> -{" "}
+                {request.status}
+                <p>{request.details}</p>
+                <p>Location: {request.location.coordinates}</p>
+              </div>
             </li>
           ))
         ) : (
-          <p>No aid requests found.</p>
+          <p className="text-gray-500">No aid requests found.</p>
         )}
       </ul>
 
       {/* Request Aid Button */}
-      <button style={styles.button} onClick={handleRequestAid}>
+      <button
+        onClick={() => navigate("/request-aid")}
+        className="mt-6 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+      >
         Request Aid
       </button>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    padding: "20px",
-    maxWidth: "600px",
-    margin: "auto",
-    textAlign: "center",
-  },
-  list: { listStyle: "none", padding: 0 },
-  item: {
-    background: "#e9ecef",
-    padding: "10px",
-    marginBottom: "10px",
-    borderRadius: "5px",
-  },
-  button: {
-    background: "#007bff",
-    color: "white",
-    padding: "10px 20px",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-    fontSize: "16px",
-    marginTop: "20px",
-  },
 };
 
 export default VictimDashboard;

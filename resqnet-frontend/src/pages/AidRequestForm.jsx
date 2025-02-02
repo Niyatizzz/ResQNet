@@ -5,7 +5,7 @@ import "./AidRequestForm.css";
 
 const AidRequestForm = () => {
   const [aidType, setAidType] = useState("");
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState(null); // [longitude, latitude]
   const [description, setDescription] = useState("");
 
   // Handles form submission
@@ -17,26 +17,28 @@ const AidRequestForm = () => {
     }
 
     const requestData = {
-      aidType,
-      latitude: location[0],
-      longitude: location[1],
-      description,
+      type: aidType,
+      location: {
+        longitude: location[1], // Latitude and Longitude order is reversed here
+        latitude: location[0],
+      },
+      details: description,
     };
 
     try {
-      await axios.post("http://localhost:5000/api/requests", requestData);
+      await axios.post("http://localhost:5000/api/aid-requests", requestData);
       alert("Aid request submitted successfully!");
       setAidType("");
       setLocation(null);
       setDescription("");
     } catch (error) {
-      console.error("Error submitting request:", error);
+      console.error("Error submitting request:", error.response || error);
       alert("Failed to submit request. Please try again.");
     }
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <div className="w-full max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
       <h2 className="text-xl font-semibold mb-4">Request Aid</h2>
 
       {/* Aid Type Selection */}
@@ -63,7 +65,9 @@ const AidRequestForm = () => {
 
       {/* Map Component */}
       <label className="block mb-2">Pin Your Location:</label>
-      <MapComponent onLocationSelect={setLocation} />
+      <div className="relative h-96 overflow-hidden">
+        <MapComponent onLocationSelect={setLocation} />
+      </div>
 
       {/* Submit Button */}
       <button
