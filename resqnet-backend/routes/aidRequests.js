@@ -84,18 +84,17 @@ router.get("/organization/:orgId", async (req, res) => {
   }
 });
 
-// Get Aid Requests Assigned to a Specific Volunteer
-router.get("/volunteer/:volunteerId", async (req, res) => {
+// Get Aid Requests Assigned to a Specific Volunteer (Only open requests)
+router.get("/", async (req, res) => {
   try {
-    const requests = await AidRequest.find({
-      assignedVolunteer: req.params.volunteerId,
-    });
+    const requests = await AidRequest.find(); // Fetch all requests
     res.json(requests);
   } catch (error) {
     res.status(500).json({ error: "Server error" });
   }
 });
 
+// Get Aid Requests Created by a Specific Victim
 // Get Aid Requests Created by a Specific Victim
 router.get("/victim/:victimId", async (req, res) => {
   try {

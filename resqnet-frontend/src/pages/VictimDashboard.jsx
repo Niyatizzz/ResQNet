@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // <-- Import useNavigate here
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const VictimDashboard = ({ victimId }) => {
   const [aidRequests, setAidRequests] = useState([]);
-  const navigate = useNavigate(); // <-- Initialize navigate function
+  const navigate = useNavigate(); // Initialize navigate function
 
   useEffect(() => {
     // Fetch aid requests created by the victim
@@ -13,7 +13,7 @@ const VictimDashboard = ({ victimId }) => {
         const response = await axios.get(
           `http://localhost:5000/api/aidrequests/victim/${victimId}`
         );
-        setAidRequests(response.data);
+        setAidRequests(response.data); // Fetch all requests created by the victim
       } catch (error) {
         console.error("Error fetching aid requests:", error);
       }
@@ -35,7 +35,7 @@ const VictimDashboard = ({ victimId }) => {
                 <strong className="text-lg">{request.type}</strong> -{" "}
                 {request.status}
                 <p>{request.details}</p>
-                <p>Location: {request.location.coordinates}</p>
+                <p>Location: {request.location.coordinates.join(", ")}</p>
               </div>
             </li>
           ))
@@ -47,7 +47,7 @@ const VictimDashboard = ({ victimId }) => {
       {/* Request Aid Button */}
       <button
         onClick={() => navigate("/request-aid")}
-        className="mt-6 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+        className="mt-6 bg-gray-700 text-white py-2 px-4 rounded-lg hover:bg-gray-800"
       >
         Request Aid
       </button>
