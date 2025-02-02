@@ -1,0 +1,161 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9; /* Light gray background */
+  margin: 0;
+  padding: 0;
+  color: #333; /* Dark text for readability */
+}
+
+/* Dashboard container */
+.dashboard-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #ddd; /* Light border around the container */
+}
+
+/* Dashboard header */
+.dashboard-header {
+  background-color: #343a40; /* Dark background for the header */
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px; /* Slightly larger font */
+  font-weight: 600;
+  border-bottom: 2px solid #ddd; /* Border to separate header */
+}
+
+/* Sidebar navigation */
+.dashboard-sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #212529; /* Darker background for sidebar */
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 30px; /* More padding for spacing */
+  border-right: 2px solid #ddd; /* Light border between sidebar and content */
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  padding: 15px 20px;
+  border-bottom: 1px solid #474f57;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-menu li a {
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+
+.sidebar-menu li:hover {
+  background: #495057; /* Hover effect */
+}
+
+/* Dashboard main content */
+.dashboard-content {
+  margin-left: 260px;
+  padding: 30px;
+}
+
+/* Cards for displaying information */
+.card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border: 1px solid #ddd; /* Light border for cards */
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #333; /* Dark text for better readability */
+  font-size: 1.6rem; /* Slightly larger heading font */
+}
+
+/* Table for data display */
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: white;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.dashboard-table th {
+  background-color: #343a40; /* Dark background for table header */
+  color: white;
+}
+
+.dashboard-table tr:nth-child(even) {
+  background-color: #f8f9fa; /* Alternating row color */
+}
+
+.dashboard-table tr:hover {
+  background-color: #f1f1f1; /* Hover effect for rows */
+}
+
+/* Buttons */
+.button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background: #007bff; /* Blue background for buttons */
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+}
+
+.button:hover {
+  background: #0056b3; /* Darker blue on hover */
+}
+
+/* Secondary button style */
+.button-secondary {
+  background: #6c757d; /* Grey button for secondary actions */
+  color: white;
+}
+
+.button-secondary:hover {
+  background: #5a6268; /* Darker grey on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding-top: 20px; /* Less padding on smaller screens */
+  }
+
+  .dashboard-content {
+    margin-left: 0;
+    padding: 20px; /* Less padding on smaller screens */
+  }
+
+  .dashboard-header {
+    font-size: 20px; /* Smaller font size for header on smaller screens */
+  }
+}
