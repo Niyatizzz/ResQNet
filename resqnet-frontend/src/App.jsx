@@ -11,89 +11,73 @@ import AidRequestForm from "./pages/AidRequestForm";
 import VolunteerDashboard from "./pages/VolunteerDashboard";
 import OrganizationDashboard from "./pages/OrganisationDashboard";
 import VictimDashboard from "./pages/VictimDashboard";
-import LoginPage from "./pages/Login"; // Import the LoginPage
+import LoginPage from "./pages/Login";
 import AboutUs from "./pages/About";
 
 function App() {
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate();
 
-  const handleVolunteerClick = () => {
-    navigate("/volunteer"); // Navigate to the VolunteerDashboard
-  };
-
-  const handleOrganizationClick = () => {
-    navigate("/organization"); // Navigate to the OrganizationDashboard
-  };
-
-  const handleVictimClick = () => {
-    navigate("/victim"); // Navigate to the VictimDashboard
-  };
-
-  const handleRequestAidClick = () => {
-    navigate("/request-aid"); // Navigate to the AidRequestForm
-  };
+  const handleVolunteerClick = () => navigate("/volunteer");
+  const handleOrganizationClick = () => navigate("/organization");
+  const handleVictimClick = () => navigate("/victim");
+  const handleRequestAidClick = () => navigate("/request-aid");
 
   return (
-    <div className="App">
-      <header className="app-header">
-        <div className="header-left">
-          <h1 className="text-4xl font-bold text-center text-blue-500">
-            ResQNet
-          </h1>
-        </div>
-        <div className="header-right">
-          <ul className="header-nav">
-            <li>
-              <i className="fas fa-home"></i>Home
-            </li>
-            <li>
-              <i className="fas fa-info-circle"></i>About Us
-            </li>
-            <li>
-              <i className="fas fa-phone-alt"></i>Helpline
-            </li>
-            <li>
-              <i className="fas fa-sign-in-alt"></i>
-              <Link to="/login">Login/Signup</Link> {/* Link to Login Page */}
-            </li>
-          </ul>
-        </div>
+    <div className="app-container">
+      <header className="main-header">
+        <div className="logo">ResQNet</div>
+        <nav className="nav-links">
+          <Link to="/" className="nav-link">
+            Home
+          </Link>
+          <Link to="/about" className="nav-link">
+            About Us
+          </Link>
+          <a href="#helpline" className="nav-link">
+            Helpline
+          </a>
+          <Link to="/login" className="nav-link login-btn">
+            Login / Signup
+          </Link>
+        </nav>
       </header>
 
-      <section className="hero-section">
-        <div className="hero-content">
-          <h1 className="hero-title">ResQNet</h1>
-          <p className="hero-tagline">
-            Linking Those In Need With Those Who Lead
-          </p>
-          <div className="cta-buttons">
-            <button
-              className="cta-button volunteer"
-              onClick={handleVolunteerClick}
-            >
-              Volunteer
-            </button>
-            <button className="cta-button victim" onClick={handleVictimClick}>
-              Victim
-            </button>
-            <button
-              className="cta-button organization"
-              onClick={handleOrganizationClick}
-            >
-              Organization
-            </button>
-          </div>
-          <div className="extra-buttons">
-            <button
-              className="cta-button report-disaster"
-              onClick={handleRequestAidClick}
-            >
-              Request Aid
-            </button>
-            <button className="cta-button locate-disaster">
-              Locate Disaster
-            </button>
-          </div>
+      <section className="hero">
+        <h1 className="hero-heading">
+          Connecting you to <span className="gradient-text">help</span>
+          <br />
+          in times of <span className="gradient-text">crisis</span>
+          <span className="dot">.</span>
+        </h1>
+        <p className="hero-subtext">
+          A platform to connect disaster victims with volunteers and
+          organizations for timely aid.
+        </p>
+        <div className="cta-group">
+          <button
+            className="cta-button volunteer"
+            onClick={handleVolunteerClick}
+          >
+            Volunteer
+          </button>
+          <button className="cta-button victim" onClick={handleVictimClick}>
+            Victim
+          </button>
+          <button
+            className="cta-button organization"
+            onClick={handleOrganizationClick}
+          >
+            Organization
+          </button>
+        </div>
+        <div className="cta-group secondary">
+          <button
+            className="cta-button request"
+            onClick={handleRequestAidClick}
+          >
+            Request Aid
+          </button>
+          <button className="cta-button locate">Locate Disaster</button>
         </div>
       </section>
 
@@ -102,17 +86,16 @@ function App() {
         <Route path="/organization" element={<OrganizationDashboard />} />
         <Route path="/victim" element={<VictimDashboard />} />
         <Route path="/request-aid" element={<AidRequestForm />} />
-        <Route path="/login" element={<LoginPage />} /> {/* Add Login Route */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/about" element={<AboutUs />} />
       </Routes>
 
-      <footer className="app-footer">
-        <div className="footer-content">
-          <p>&copy; 2025 ResQNet. All rights reserved.</p>
-          <div className="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Contact</a>
-          </div>
+      <footer className="footer">
+        <p>&copy; 2025 ResQNet. All rights reserved.</p>
+        <div className="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Contact</a>
         </div>
       </footer>
     </div>

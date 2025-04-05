@@ -1,8 +1,10 @@
 /* src/App.css */
 
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
+
+@import url("https://fonts.googleapis.com/css2?family=Fenix&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 body {
   margin: 0;
@@ -204,4 +206,158 @@ body {
   padding: 20px;
   text-align: center;
   margin-top: auto; /* Push footer to bottom */
+}
+
+/* App.css */
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background-color: #fff;
+  color: #1f2937;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #3b82f6;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-weight: 500;
+  color: #1f2937;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #6366f1;
+}
+
+.login-btn {
+  background-color: #6366f1;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.hero {
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  background-color: #f9fafb;
+}
+
+.hero-heading {
+  font-family: "Poppins", sans-serif;
+  font-size: 3.3rem;
+  font-weight: 730;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #a855f7, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dot {
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+.hero-subtext {
+  color: #6b7280;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+}
+
+.cta-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-group.secondary {
+  gap: 1rem;
+}
+
+.cta-button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 3px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Purple outline for main buttons */
+.volunteer,
+.victim,
+.organization {
+  border-color: #7c3aed; /* purple-600 */
+  color: #7c3aed;
+}
+
+/* Red outline for secondary buttons */
+.request,
+.locate {
+  border-color: #dc2626; /* red-600 */
+  color: #dc2626;
+}
+
+.footer {
+  background-color: #f3f4f6;
+  padding: 1.5rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+  color: #4f46e5;
 }
