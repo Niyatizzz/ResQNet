@@ -48,7 +48,7 @@ const styles = {
   container: { padding: "20px", maxWidth: "600px", margin: "auto" },
   list: { listStyle: "none", padding: 0 },
   item: {
-    background: "#e9ecef",
+    background: "white",
     padding: "10px",
     marginBottom: "10px",
     borderRadius: "5px",

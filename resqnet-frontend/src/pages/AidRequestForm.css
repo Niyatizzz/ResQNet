@@ -1,5 +1,5 @@
 .aid-request-form {
-  max-width: 500px;
+  min-width: 1200px;
   margin: auto;
   padding: 20px;
   background: #ffffff;
@@ -42,7 +42,8 @@
 .aid-request-form button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #6366f1;
+  margin-top: 20px;
   color: white;
   font-size: 16px;
   border: none;
@@ -52,7 +53,7 @@
 }
 
 .aid-request-form button:hover {
-  background-color: #0056b3;
+  background-color: #5b5df1;
 }
 
 @media (max-width: 600px) {

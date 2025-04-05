@@ -38,7 +38,7 @@ const AidRequestForm = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <div className="aid-request-form">
       <h2 className="text-xl font-semibold mb-4">Request Aid</h2>
 
       {/* Aid Type Selection */}

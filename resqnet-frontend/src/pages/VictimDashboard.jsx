@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./VictimDashboard.css"; // Import custom styles
 
 const VictimDashboard = ({ victimId }) => {
   const [aidRequests, setAidRequests] = useState([]);
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch aid requests created by the victim
     const fetchRequests = async () => {
       try {
         const response = await axios.get(
           `http://localhost:5000/api/aidrequests/victim/${victimId}`
         );
-        setAidRequests(response.data); // Fetch all requests created by the victim
+        setAidRequests(response.data);
       } catch (error) {
         console.error("Error fetching aid requests:", error);
       }
@@ -22,32 +22,37 @@ const VictimDashboard = ({ victimId }) => {
   }, [victimId]);
 
   return (
-    <div className="container mx-auto p-6 max-w-lg text-center">
-      <h2 className="text-2xl font-semibold mb-4">My Aid Requests</h2>
-      <ul className="space-y-4">
+    <div className="victim-dashboard">
+      <h2>My Aid Requests</h2>
+      <ul className="request-list">
         {aidRequests.length > 0 ? (
           aidRequests.map((request) => (
-            <li
-              key={request._id}
-              className="bg-gray-200 p-4 rounded-lg shadow-md flex justify-between items-center"
-            >
+            <li key={request._id} className="request-card">
               <div>
-                <strong className="text-lg">{request.type}</strong> -{" "}
-                {request.status}
-                <p>{request.details}</p>
-                <p>Location: {request.location.coordinates.join(", ")}</p>
+                <p className="request-type">
+                  <strong>Type:</strong> {request.type}
+                </p>
+                <p className="request-status">
+                  <strong>Status:</strong> {request.status}
+                </p>
+                <p>
+                  <strong>Details:</strong> {request.details}
+                </p>
+                <p>
+                  <strong>Location:</strong>{" "}
+                  {request.location.coordinates.join(", ")}
+                </p>
               </div>
             </li>
           ))
         ) : (
-          <p className="text-gray-500">No aid requests found.</p>
+          <p className="no-requests">No aid requests found.</p>
         )}
       </ul>
 
-      {/* Request Aid Button */}
       <button
         onClick={() => navigate("/request-aid")}
-        className="mt-6 bg-gray-700 text-white py-2 px-4 rounded-lg hover:bg-gray-800"
+        className="request-button"
       >
         Request Aid
       </button>
