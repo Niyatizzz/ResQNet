@@ -1,31 +1,61 @@
+import React from "react";
+import "./AboutUs.css";
+
 export default function AboutUs() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-      <div className="max-w-4xl bg-white p-8 rounded-2xl shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">About Us</h1>
-        <p className="text-gray-600 text-lg mb-4">
-          Welcome to our company! We are dedicated to providing the best
-          services and solutions for our clients. Our team is passionate,
-          innovative, and committed to excellence.
+    <div className="about-container">
+      <div className="about-content">
+        <h1>About ResQNet</h1>
+        <p>
+          ResQNet is a community-driven platform dedicated to improving disaster
+          response and recovery efforts. Built with compassion and powered by
+          technology, we connect individuals, volunteers, and organizations to
+          streamline help, share resources, and foster resilience in times of
+          crisis.
         </p>
-        <h2 className="text-2xl font-semibold text-gray-700 mt-6">
-          Our Mission
-        </h2>
-        <p className="text-gray-600 text-lg mt-2">
-          To deliver high-quality products and services that exceed customer
-          expectations and drive success.
+
+        <h2>Our Mission</h2>
+        <p>
+          To empower communities during disasters by providing a reliable
+          platform for real-time communication, verified aid requests, and
+          efficient volunteer coordination. We strive to bridge the gap between
+          those in need and those ready to help.
         </p>
-        <h2 className="text-2xl font-semibold text-gray-700 mt-6">
-          Our Vision
-        </h2>
-        <p className="text-gray-600 text-lg mt-2">
-          To be a leader in our industry, constantly innovating and pushing
-          boundaries.
+
+        <h2>Our Vision</h2>
+        <p>
+          A world where every individual impacted by disaster can quickly access
+          support, and every helping hand is effectively mobilized. We envision
+          a future of smarter, faster, and more inclusive humanitarian
+          responses.
         </p>
-        <h2 className="text-2xl font-semibold text-gray-700 mt-6">Our Team</h2>
-        <p className="text-gray-600 text-lg mt-2">
-          A group of skilled professionals with diverse backgrounds, working
-          together to achieve great results.
+
+        <h2>Our Core Values</h2>
+        <ul>
+          <li>
+            <strong>Empathy:</strong> People-first approach in every decision.
+          </li>
+          <li>
+            <strong>Transparency:</strong> Verified information, open
+            communication.
+          </li>
+          <li>
+            <strong>Responsiveness:</strong> Rapid aid coordination when seconds
+            matter.
+          </li>
+          <li>
+            <strong>Collaboration:</strong> Building a stronger network through
+            unity.
+          </li>
+        </ul>
+
+        <h2>Our Team</h2>
+        <p>
+          We are a multidisciplinary team of developers, designers, field
+          volunteers, and strategists united by a common purpose — to create
+          meaningful change. Each of us brings unique strengths, but together,
+          we are building a powerful platform to support those facing the
+          toughest of times.
         </p>
       </div>
     </div>
