@@ -1,35 +1,44 @@
-/* src/App.css */
-body {
+/* Import Tailwind CSS */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Reset and base styles */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: Arial, sans-serif;
-  background-color: #121212; /* Dark background for a sleek look */
-  color: white; /* White text for contrast */
 }
 
 .App {
+  min-height: 100vh;
   display: flex;
-  flex-direction: column; /* Ensures header stays on top and content below */
-  height: 100vh;
-  overflow: hidden; /* Prevent scrolling */
+  flex-direction: column;
 }
 
-/* Header with backdrop */
+/* Header styles - apply to all pages */
 .app-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
-  padding: 20px 40px; /* Increased padding for more space */
-  position: fixed; /* Make it fixed at the top */
+  padding: 20px 40px;
+  position: fixed;
   top: 0;
   width: 100%;
-  z-index: 10; /* Ensures header stays above hero section */
-  box-sizing: border-box; /* Ensures padding is included in the width */
+  z-index: 1000;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
 }
 
 .header-left h1 {
   margin: 0;
-  font-size: 1.8rem; /* Slightly larger font size for a better look */
+  font-size: 1.8rem;
 }
 
 .header-right {
@@ -39,73 +48,95 @@ body {
 
 .header-nav {
   display: flex;
-  list-style: none; /* Remove default bullet points */
-  gap: 25px; /* Increased gap for more space between items */
+  list-style: none;
+  gap: 25px;
   padding: 0;
   margin: 0;
 }
 
 .header-nav li {
-  font-size: 1.1rem; /* Slightly larger font size for better visibility */
+  font-size: 1.1rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .header-nav li:hover {
-  color: #bbb; /* Light gray for hover effect */
+  color: #bbb;
 }
 
-/* Full screen hero section with background */
-.hero-section {
+.header-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header-nav a:hover {
+  color: #ff6b35;
+}
+
+/* Main content wrapper */
+.main-content {
+  flex: 1;
+  padding-top: 80px;
+  /* Account for fixed header */
+}
+
+/* Home page specific styles */
+.home-wrapper {
+  background-color: #121212;
+  color: white;
+  min-height: calc(100vh - 80px);
+}
+
+.home-wrapper .hero-section {
   text-align: center;
-  background-image: url("https://plus.unsplash.com/premium_photo-1663045423469-aade0c24bd6a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); /* Background image */
+  background-image: url("https://plus.unsplash.com/premium_photo-1663045423469-aade0c24bd6a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
   background-position: center;
-  height: 100vh; /* Ensures it covers the full viewport height */
+  height: calc(100vh - 80px);
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 }
 
-/* Full screen backdrop for text content */
-.hero-section::before {
+.home-wrapper .hero-section::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent backdrop */
-  z-index: 1; /* Ensures the backdrop is behind the text */
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
 }
 
-.hero-content {
+.home-wrapper .hero-content {
   text-align: center;
   padding: 40px;
   border-radius: 10px;
-  z-index: 2; /* Ensures the content is on top of the backdrop */
+  z-index: 2;
+  position: relative;
 }
 
-.hero-title {
+.home-wrapper .hero-title {
   font-size: 3rem;
   margin-bottom: 10px;
 }
 
-.hero-tagline {
+.home-wrapper .hero-tagline {
   font-size: 1.5rem;
   margin-bottom: 20px;
-  color: #bbb; /* Light gray for the tagline */
+  color: #bbb;
 }
 
-.cta-buttons {
+.home-wrapper .cta-buttons {
   display: flex;
   justify-content: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
-/* Common button style for all buttons */
-.cta-button {
+.home-wrapper .cta-button {
   background-color: transparent;
   color: white;
   border: 1.5px solid white;
@@ -116,36 +147,24 @@ body {
   transition: all 0.3s ease;
 }
 
-.cta-button:hover {
+.home-wrapper .cta-button:hover {
   background-color: #444;
   border-color: #666;
 }
 
-.volunteer {
-  background-color: transparent; /* Transparent background for volunteer button */
-}
-
-.victim {
-  background-color: transparent; /* Transparent background for victim button */
-}
-
-.organization {
-  background-color: transparent; /* Transparent background for organization button */
-}
-
-/* New buttons: Report Disaster and Locate Disaster */
-.extra-buttons {
+.home-wrapper .extra-buttons {
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-top: 18px; /* Adds space between the existing and new buttons */
+  margin-top: 18px;
+  flex-wrap: wrap;
 }
 
-.report-disaster,
-.locate-disaster {
+.home-wrapper .report-disaster,
+.home-wrapper .locate-disaster {
   background-color: transparent;
   color: #e74c3c;
-  border: 1.5px solid #e74c3c; /* Red border for both buttons */
+  border: 1.5px solid #e74c3c;
   border-radius: 2px;
   padding: 15px 42px;
   font-size: 1rem;
@@ -153,8 +172,82 @@ body {
   transition: all 0.3s ease;
 }
 
-.report-disaster:hover,
-.locate-disaster:hover {
-  background-color: #e74c3c; /* Red background on hover */
-  border-color: #e74c3c; /* Darker red border on hover */
+.home-wrapper .report-disaster:hover,
+.home-wrapper .locate-disaster:hover {
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+  color: white;
+}
+
+/* About page and other pages - ensure they have proper styling */
+.about-page {
+  background-color: white;
+  color: #333;
+  min-height: calc(100vh - 80px);
+}
+
+/* Animation classes for About page */
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fade-in-down 1s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out 0.3s both;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 15px 20px;
+  }
+
+  .header-nav {
+    gap: 15px;
+  }
+
+  .header-nav li {
+    font-size: 1rem;
+  }
+
+  .home-wrapper .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .home-wrapper .hero-tagline {
+    font-size: 1.2rem;
+  }
+
+  .home-wrapper .cta-buttons,
+  .home-wrapper .extra-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-wrapper .cta-button {
+    width: 200px;
+  }
 }
